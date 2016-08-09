@@ -16,11 +16,8 @@ html(lang='zh-CN')
           a.navbar-brand(href="#") 迎新系统的新衣
     .container
       .row
-        .col-xs-12
-          h1 信息查询
-            small bakaRaion rev.
-      .row
         .col-sm-6.col-md-5
+          h1 信息查询
           form#formLogin.form-horizontal(action="http://enroll.shmtu.edu.cn/freshmen/loginAction.do?method=login", target="formHandler", method="POST")
             .form-group
               label.control-label.col-sm-5(for="inputId") 通知书条形码编号
@@ -48,17 +45,17 @@ html(lang='zh-CN')
               .col-sm-7.col-sm-offset-5
                 button.btn.btn-primary(type="submit") 查询
             p.text-info 提示：如果您查询后，看见结果框中只有一个登录主页面，说明您的输入有误没有登录成功，重新输入正确信息再查询。
-            p.text-warning 注意：寝室信息，一般比学号、班级信息更晚录入，请持续关注。
+            p.text-warning 注意：寝室信息，一般比学号、班级信息更晚录入，请<b>持续关注</b>。开学后即可使用您的<b>学号</b>，并以身份证后六位（同上）为密码，登录学校的数字平台。<b>忠告：记得改密码。</b>
         .col-sm-6.col-md-7
           iframe#theMadafaka
           
     footer
       .container: .row: .col-xs-12.text-center
         .alert.alert-info
-          p 隐私声明：所有的查询均在您的设备上自动登录、执行完毕，因此输入的任何个人信息都不会被此站记录，查询完毕后将立即自动登出。
           p 此页面为静态页面，通过访问
             a(href="http://enroll.shmtu.edu.cn/freshmen/index.do", target="_blank") 上海海事大学迎新系统
             | 获取数据。
+          p 隐私声明：所有的查询均在您的设备上自动登录、执行完毕，因此输入的任何个人信息都不会被此站记录，查询完毕后将立即自动登出。
         p.small 欢迎对页面提出建议，可以发送邮件、在 GitHub 提交 Issue，或者直接发出 Pull Request。
         p.small 此页面由 
           a(href="https://github.com/LionNatsu", target="_blank") Lion Yang &lt;lion@aosc.xyz&gt;
@@ -75,7 +72,9 @@ html(lang='zh-CN')
     
     iframe#formHandler(name="formHandler")
     script.
+      //
       // A Tiny Promise (Tail Recursion) By Lion 2016.08.09
+      //
       var Esimorp = {
         taskQueue: [],
         then: function(fnc) {
