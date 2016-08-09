@@ -1,0 +1,32 @@
+body {
+  font-family: 'Hiragino Sans GB W3', 'Microsoft YaHei UI', sans;
+}
+h1 > small {
+  margin-left: 1em;
+}
+#formLogin {
+  margin-top: 20px;
+  margin-bottom: 85px;
+}
+#formLogin #imgVc {
+  filter: grayscale();
+  -webkit-filter: grayscale();
+}
+#theMadafaka {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-height: 400px;
+  filter: grayscale();
+  -webkit-filter: grayscale();
+  margin-top: -65px;
+}
+#formHandler {
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+}
+footer {
+  margin: 40px 0;
+}
