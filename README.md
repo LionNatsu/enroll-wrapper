@@ -3,6 +3,23 @@
 I never optimistically think there will be any change on the
 aesthetic enrolling page. This 'redesigned' that terrible shit in some way.
 
+
+## Compile
+Firstly, install two packages globally: `pug-cli` and `stylus`.
+
+```(shell)
+npm install --global pug-cli stylus
+```
+
+then,
+
+```(shell)
+./compile
+```
+
+and everything you need is lying comfortably in `bin`.
+
+
 ## Branch & GitHub Pages
 Branch `master` includes source code (which are coded in Pug and Stylus) and
 compile script.
@@ -18,10 +35,12 @@ It is:
 - not a reverse-proxy;
 - using `iframe` to cross domain, but not manipulate or read it.
 
+
 ## License
 It is under the version 3 of the GNU General Public License.
 
 http://www.gnu.org/licenses/gpl-3.0.html
+
 
 ## When will this be out-of-date?
 This project is based on:
