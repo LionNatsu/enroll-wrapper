@@ -1,7 +1,7 @@
 doctype html
 html(lang='zh-CN')
   head
-    title 入学信息查询 - 上海海事大学
+    title 上海海事大学入学信息查询
     link(rel="stylesheet", href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css")
     link(rel="stylesheet", href="index.css")
     script(src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js")
@@ -53,6 +53,9 @@ html(lang='zh-CN')
       .container: .row: .col-xs-12.text-center
         .alert.alert-info
           p 隐私声明：所有的查询均在您的设备上自动登录、执行完毕，因此输入的任何个人信息都不会被此站记录，查询完毕后将立即自动登出。
+          p 此页面为静态页面，通过访问
+            a(href="http://enroll.shmtu.edu.cn/freshmen/index.do", target="_blank") 上海海事大学迎新系统
+            | 获取数据。
         p.small 欢迎对页面提出建议，可以发送邮件、在 GitHub 提交 Issue，或者直接发出 Pull Request。
         p.small 此页面由 
           a(href="https://github.com/LionNatsu", target="_blank") Lion Yang &lt;lion@aosc.xyz&gt;
