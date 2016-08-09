@@ -1,0 +1,107 @@
+doctype html
+html(lang='zh-CN')
+  head
+    title 入学信息查询 - 上海海事大学
+    link(rel="stylesheet", href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css")
+    link(rel="stylesheet", href="index.css")
+    script(src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js")
+    script(src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js")
+  body
+    nav.navbar.navbar-default
+      .container
+        .navbar-header
+          a.navbar-brand(href="#") 迎新系统的新衣
+    .container
+      .row
+        .col-xs-12
+          h1 信息查询
+            small bakaRaion rev.
+      .row
+        .col-sm-6.col-md-5
+          form#formLogin.form-horizontal(action="http://enroll.shmtu.edu.cn/freshmen/loginAction.do?method=login", target="formHandler", method="POST")
+            .form-group
+              label.control-label.col-sm-5(for="inputId") 通知书条形码编号
+              .col-sm-7
+                .input-group
+                  span.input-group-addon
+                    .glyphicon.glyphicon-barcode
+                  input#inputId.form-control(type="text", name="name")
+            .form-group
+              label.control-label.col-sm-5(for="inputPwd") 身份证后六位
+              .col-sm-7
+                .input-group
+                  span.input-group-addon
+                    .glyphicon.glyphicon-user
+                  input#inputPwd.form-control(type="password", name="password")
+                span.help-block * X 请用大写字母
+            .form-group
+              label.control-label.col-sm-5(for="inputVc") 验证码
+              .col-sm-7
+                .input-group
+                  span.input-group-addon
+                    img#imgVc(src="http://enroll.shmtu.edu.cn/freshmen/CheckCodeImage", alt="")
+                  input#inputVc.form-control(type="text", name="chkCode")
+            .form-group
+              .col-sm-7.col-sm-offset-5
+                button.btn.btn-primary(type="submit") 查询
+            p.text-info 提示：如果您查询后，看见结果框中只有一个登录主页面，说明您的输入有误没有登录成功，重新输入正确信息再查询。
+        .col-sm-6.col-md-7
+          iframe#theMadafaka
+          
+          
+    footer
+      .container: .row: .col-xs-12.text-center
+        .alert.alert-info
+          p 隐私声明：所有的查询均在您的设备上自动登录、执行完毕，因此输入的任何个人信息都不会被此站记录，查询完毕后将立即自动登出。
+        p.small 欢迎对页面提出建议，可以发送邮件、在 GitHub 提交 Issue，或者直接发出 Pull Request。
+        p.small 此页面由 
+          a(href="https://github.com/LionNatsu", target="_blank") Lion Yang &lt;lion@aosc.xyz&gt;
+          |  维护，项目位于 
+          a(href="https://github.com/LionNatsu/enroll-warp", target="_blank") GitHub
+          | ，域名与站点由 
+          a(href="https://pages.github.com/", target="_blank") GitHub Pages
+          |  托管，
+          a(href="https://getbootstrap.com/", target="_blank") Bootstrap
+          |  作为前端框架，并包含 
+          a(href="https://glyphicons.com/", target="_blank") GLYPHICONS
+          |  图标。
+        p.small 作者： Lion Yang，杨达明，外国语学院 2015 届日语 152 班
+    
+    iframe#formHandler(name="formHandler")
+    script.
+      // A Tiny Promise (Tail Recursion) By Lion 2016.08.09
+      var Esimorp = {
+        taskQueue: [],
+        then: function(fnc) {
+          this.taskQueue.push(fnc);
+          return this;
+        },
+        go: function() {
+          that = this;
+          function resolve() {
+            var fnc = that.taskQueue.shift();
+            if(fnc) fnc(resolve);
+          }
+          resolve();
+        }
+      }
+      $(function() {
+        $('#formLogin').submit(function() {
+          var esi = Esimorp;
+          esi.then(function(resolve) {
+            $('#formHandler').load(resolve);
+          }).then(function(resolve) {
+            $('#theMadafaka').attr('src', 'http://enroll.shmtu.edu.cn/freshmen/checkinmanageAction.do?method=personalinfoview');
+            $('#theMadafaka').load(resolve);
+          }).then(function(resolve) {
+            $('#theMadafaka').load(null);
+            $('#formHandler').attr('src', 'http://enroll.shmtu.edu.cn/freshmen/logoutAction.do?method=logout');
+            $('#formHandler').load(resolve);
+          }).then(function(resolve) {
+            $('#formHandler').load(null);
+            $('#imgVc').attr('src', 'http://enroll.shmtu.edu.cn/freshmen/CheckCodeImage?timestamp=' + new Date().getTime());
+            $('#inputVc').val('');
+            resolve()
+          }).go();
+        });
+      });

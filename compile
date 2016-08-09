@@ -1,0 +1,4 @@
+#!/bin/bash
+
+stylus src --out bin
+pug src --out bin
