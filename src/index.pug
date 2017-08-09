@@ -24,7 +24,7 @@ html(lang='zh-CN')
                 .input-group
                   span.input-group-addon
                     .glyphicon.glyphicon-barcode
-                  input#inputId.form-control(type="text", name="name")
+                  input#inputId.form-control(type="text", name="name", placeholder="xxxxxx")
             .form-group
               label.control-label.col-sm-5(for="inputPwd") 身份证后六位
               .col-sm-7
@@ -89,6 +89,7 @@ html(lang='zh-CN')
         $('#imgVc').attr('src', 'http://enroll.shmtu.edu.cn/freshmen/CheckCodeImage?timestamp=' + new Date().getTime());
       }
       $(function() {
+        $('#inputId').attr('placeholder', (new Date().getFullYear()-2000) + 'xxxx');
         $('#formLogin').submit(function() {
           var esi = Esimorp;
           esi.then(function(resolve) {
@@ -109,3 +110,4 @@ html(lang='zh-CN')
         });
       });
       console.log('很惭愧，就做了一点微小的工作，谢谢大家。');
+      console.log('UVEzNzI2OTEwMDYK 狮子.');
