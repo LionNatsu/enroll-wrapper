@@ -11,6 +11,9 @@ h1 > small {
   filter: grayscale();
   -webkit-filter: grayscale();
 }
+#formLogin input {
+  font-family: monospace;
+}
 #theMadafaka {
   width: 100%;
   height: 100%;
